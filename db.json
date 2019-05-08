@@ -1,14 +1,18 @@
 {
-  "posts": [
-    { "id": 1, "title": "Post 1" },
-    { "id": 2, "title": "Post 2" },
-    { "id": 3, "title": "Post 3" }
+  "collections": [
+    { "id": 1, "title": "Jordan" },
+    { "id": 2, "title": "Nike" },
+    { "id": 3, "title": "Adidas" }
   ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 },
-    { "id": 2, "body": "some comment", "postId": 1 }
+  "shoes": [
+    { "id": 1, "body": "Retro 4 Cement", "collectionsId": 1 },
+    { "id": 2, "body": "Retro 6 UNC", "collectionsId": 1 },
+    { "id": 3, "body": "Huarache", "collectionsId":  2},
+    { "id": 4, "body": "Air Max", "collectionsId":  2},
+    { "id": 5, "body": "Nomad", "collectionsId":  3},
+    { "id": 6, "body": "Ultra Boost", "collectionsId":  3}
   ],
   "profile": {
-    "name": "typicode"
+    "name": "Default User"
   }
 }
