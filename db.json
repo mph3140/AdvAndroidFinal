@@ -1,16 +1,16 @@
 {
   "collections": [
-    { "id": 1, "title": "Jordan" },
-    { "id": 2, "title": "Nike" },
-    { "id": 3, "title": "Adidas" }
+    { "collectionId": 1, "name": "Jordan" },
+    { "collectionId": 2, "name": "Nike" },
+    { "collectionId": 3, "name": "Adidas" }
   ],
   "shoes": [
-    { "id": 1, "body": "Retro 4 Cement", "collectionsId": 1 },
-    { "id": 2, "body": "Retro 6 UNC", "collectionsId": 1 },
-    { "id": 3, "body": "Huarache", "collectionsId":  2},
-    { "id": 4, "body": "Air Max", "collectionsId":  2},
-    { "id": 5, "body": "Nomad", "collectionsId":  3},
-    { "id": 6, "body": "Ultra Boost", "collectionsId":  3}
+    { "shoeId": 1, "name": "Retro 4 Cement", "collectionId": 1 },
+    { "shoeId": 2, "name": "Retro 6 UNC", "collectionId": 1 },
+    { "shoeId": 3, "name": "Huarache", "collectionId":  2},
+    { "shoeId": 4, "name": "Air Max", "collectionId":  2},
+    { "shoeId": 5, "name": "Nomad", "collectionId":  3},
+    { "shoeId": 6, "name": "Ultra Boost", "collectionId":  3}
   ],
   "profile": {
     "name": "Default User"
