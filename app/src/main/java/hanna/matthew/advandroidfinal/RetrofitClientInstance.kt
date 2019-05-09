@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 object RetrofitClientInstance {
 
     private var retrofit: Retrofit? = null
-    private const val BASE_URL = "https://my-json-server.typicode.com/mph3140/AdvAndroidFinal/"
+    private const val BASE_URL = "https://my-json-server.typicode.com/mph3140/FakeDBForFinal/"
 
     val retrofitInstance: Retrofit?
         get() {
