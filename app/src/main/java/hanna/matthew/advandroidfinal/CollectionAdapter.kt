@@ -11,10 +11,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-private class CollectionAdapter(private val context: Context, private val collectionList: List<Collection>) :
+class CollectionAdapter(private val context: Context, private val collectionList: List<Collection>) :
     RecyclerView.Adapter<CollectionAdapter.CollectionViewHolder>() {
 
-    internal inner class CollectionViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+    inner class CollectionViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
 
         var txtTitle: TextView
         val collectionImage: ImageView

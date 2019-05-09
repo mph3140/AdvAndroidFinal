@@ -12,10 +12,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-private class ShoeAdapter(private val context: Context, private val shoeList: List<Shoe>) :
+class ShoeAdapter(private val context: Context, private val shoeList: List<Shoe>) :
     RecyclerView.Adapter<ShoeAdapter.ShoeViewHolder>() {
 
-    internal inner class ShoeViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+    inner class ShoeViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
 
         var txtTitle: TextView
         val shoeImage: ImageView
