@@ -6,10 +6,10 @@ import retrofit2.http.Path
 
 
 interface GitHubService {
-//    fun listRepos(@Path("user") user: String): Call<List<Repo>>
-    @GET("/collections")
+    @GET("https://my-json-server.typicode.com/mph3140/FakeDBForFinal/collections")
     fun getAllCollections(): Call<List<Collection>>
+//    fun getAllCollections(): (@Path("user") user: String): Call<List<Collection>>
 
-    @GET("/shoes")
+    @GET("https://my-json-server.typicode.com/mph3140/FakeDBForFinal/shoes")
     fun getAllShoes(): Call<List<Shoe>>
 }

@@ -1,6 +1,7 @@
 package hanna.matthew.advandroidfinal
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
@@ -49,9 +50,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     /*Method to generate List of data using RecyclerView with custom adapter*/
-    private fun generateDataList(photoList: List<Collection>) {
-        recyclerView = findViewById<View>(R.id.collectionRecyclerView) as RecyclerView?
-        adapter = CollectionAdapter(this, photoList)
+    private fun generateDataList(collectionList: List<Collection>) {
+        recyclerView = findViewById(R.id.collectionRecyclerView)
+        adapter = CollectionAdapter(this, collectionList)
         val layoutManager = LinearLayoutManager(this@MainActivity)
         recyclerView!!.layoutManager = layoutManager
         recyclerView!!.adapter = adapter
