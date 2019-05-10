@@ -20,7 +20,8 @@ class ShoeActivity : AppCompatActivity() {
     private var adapter: ShoeAdapter? = null
     private var recyclerView: RecyclerView? = null
     private val addShoeCode = 101
-    private var savedShoes: ArrayList<Shoe>? = null
+//    private var savedShoes: ArrayList<Shoe>? = null
+//    private var shoesToAdd: ArrayList<Shoe>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,33 +39,41 @@ class ShoeActivity : AppCompatActivity() {
         }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val intent = intent
-        val collection = intent.getIntExtra("ShoeType", 0)
-        val service = RetrofitClientInstance.retrofitInstance!!.create(GitHubService::class.java!!)
-        val call = service.getAllShoes()
-        call.enqueue(object : Callback<List<Shoe>> {
-            override fun onResponse(call: Call<List<Shoe>>, response: Response<List<Shoe>>) {
-//                progressDoalog.dismiss()
-                val shoes = response.body()!!
-                val shoesToAdd: ArrayList<Shoe>         //Had issues with modifying, after writing iterator realized it was probabaly because val, just going to leave it
-                shoesToAdd = shoes as ArrayList<Shoe>
-                val iterator = shoesToAdd.iterator()
-                while (iterator.hasNext()) {
-                    val value = iterator.next()
-                    if (value.collectionId != collection) {
-                        iterator.remove()
-                    }
-                }
-                savedShoes = shoesToAdd
-            }
+        if (savedInstanceState != null)
+        {
 
-            override fun onFailure(call: Call<List<Shoe>>, t: Throwable) {
+        }
+        else {
+            val intent = intent
+            val collection = intent.getIntExtra("ShoeType", 0)
+            val service = RetrofitClientInstance.retrofitInstance!!.create(GitHubService::class.java!!)
+            val call = service.getAllShoes()
+            call.enqueue(object : Callback<List<Shoe>> {
+                override fun onResponse(call: Call<List<Shoe>>, response: Response<List<Shoe>>) {
 //                progressDoalog.dismiss()
-                Toast.makeText(this@ShoeActivity, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show()
-            }
-        })
-        if(savedShoes != null)
-            generateShoeList(savedShoes!!)
+                    val shoes = response.body()!!
+                    val shoesToAdd: ArrayList<Shoe>         //Had issues with modifying, after writing iterator realized it was probabaly because val, just going to leave it
+                    shoesToAdd = shoes as ArrayList<Shoe>
+                    val iterator = shoesToAdd!!.iterator()
+                    while (iterator.hasNext()) {
+                        val value = iterator.next()
+                        if (value.collectionId != collection) {
+                            iterator.remove()
+                        }
+                    }
+//                savedShoes = shoesToAdd
+                    generateShoeList(shoesToAdd)
+                }
+
+                override fun onFailure(call: Call<List<Shoe>>, t: Throwable) {
+//                progressDoalog.dismiss()
+                    Toast.makeText(this@ShoeActivity, "Something went wrong...Please try later!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            })
+        }
+//        if(shoesToAdd != null)
+//            generateShoeList(shoesToAdd!!)
     }
 
     /*Method to generate List of data using RecyclerView with collection adapter*/
