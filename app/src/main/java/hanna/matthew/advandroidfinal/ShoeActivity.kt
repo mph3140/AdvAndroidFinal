@@ -46,7 +46,7 @@ class ShoeActivity : AppCompatActivity() {
         else {
             val intent = intent
             val collection = intent.getIntExtra("ShoeType", 0)
-            val service = RetrofitClientInstance.retrofitInstance!!.create(GitHubService::class.java!!)
+            val service = RetrofitClientInstance().retrofitInstance!!.create(GitHubService::class.java!!)
             val call = service.getAllShoes()
             call.enqueue(object : Callback<List<Shoe>> {
                 override fun onResponse(call: Call<List<Shoe>>, response: Response<List<Shoe>>) {

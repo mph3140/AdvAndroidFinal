@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
-        val service = RetrofitClientInstance.retrofitInstance!!.create(GitHubService::class.java!!)
+        val service = RetrofitClientInstance().retrofitInstance!!.create(GitHubService::class.java!!)
         val call = service.getAllCollections()
         call.enqueue(object : Callback<List<Collection>> {
             override fun onResponse(call: Call<List<Collection>>, response: Response<List<Collection>>) {
