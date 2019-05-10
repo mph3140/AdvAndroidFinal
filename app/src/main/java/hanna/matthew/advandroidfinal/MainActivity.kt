@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         call.enqueue(object : Callback<List<Collection>> {
             override fun onResponse(call: Call<List<Collection>>, response: Response<List<Collection>>) {
 //                progressDoalog.dismiss()
-                generateDataList(response.body()!!)
+                generateCollectionList(response.body()!!)
             }
 
             override fun onFailure(call: Call<List<Collection>>, t: Throwable) {
@@ -49,8 +49,8 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    /*Method to generate List of data using RecyclerView with custom adapter*/
-    private fun generateDataList(collectionList: List<Collection>) {
+    /*Method to generate List of data using RecyclerView with collection adapter*/
+    private fun generateCollectionList(collectionList: List<Collection>) {
         recyclerView = findViewById(R.id.collectionRecyclerView)
         adapter = CollectionAdapter(this, collectionList)
         val layoutManager = LinearLayoutManager(this@MainActivity)
