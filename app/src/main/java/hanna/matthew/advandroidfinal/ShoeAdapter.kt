@@ -38,7 +38,7 @@ class ShoeAdapter(private val context: Context, private val shoeList: List<Shoe>
 
         val builder = Picasso.Builder(context)
         builder.downloader(OkHttp3Downloader(context))
-        builder.build().load(R.drawable.default_image)
+        builder.build().load(shoeList[position].shoeImageURL)
             .placeholder(R.drawable.ic_launcher_background)
             .error(R.drawable.ic_launcher_background)
             .into(holder.shoeImage)

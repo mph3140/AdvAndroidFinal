@@ -54,8 +54,9 @@ class CollectionAdapter(private var context: Context, private val collectionList
 
         val builder = Picasso.Builder(context)
         builder.downloader(OkHttp3Downloader(context))
-        builder.build().load(R.drawable.default_image)
+        builder.build().load(collectionList[position].brandLogoURL)
             .placeholder(R.drawable.ic_launcher_background)
+            .resize(200, 200)
             .error(R.drawable.ic_launcher_background)
             .into(holder.collectionImage)
 
