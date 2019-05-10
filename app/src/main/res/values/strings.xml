@@ -3,4 +3,5 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_shoe">Shoes</string>
     <string name="title_activity_add_new_shoe">Add a Shoe</string>
+    <string name="title_activity_setting">SettingActivity</string>
 </resources>
