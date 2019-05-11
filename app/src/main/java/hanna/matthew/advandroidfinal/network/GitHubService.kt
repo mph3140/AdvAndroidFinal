@@ -1,5 +1,7 @@
-package hanna.matthew.advandroidfinal
+package hanna.matthew.advandroidfinal.network
 
+import hanna.matthew.advandroidfinal.data.Collection
+import hanna.matthew.advandroidfinal.data.Shoe
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.PUT

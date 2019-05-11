@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_add_new_shoe"
-        tools:context=".AddNewShoe">
+        tools:context=".ui.AddNewShoe">
 
     <TextView
             android:text="Fill in information about the shoe"
@@ -26,6 +26,7 @@
             android:id="@+id/shoeName"
             android:hint="Shoe Name"
             android:inputType="text"
+
             app:layout_constraintTop_toTopOf="@+id/instructionTextView"
             app:layout_constraintStart_toStartOf="@+id/instructionTextView"
             app:layout_constraintBottom_toBottomOf="@+id/instructionTextView" android:layout_marginStart="8dp"

@@ -13,36 +13,36 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
         <activity
-                android:name=".SettingActivity"
+                android:name=".ui.SettingActivity"
                 android:label="@string/title_activity_setting"
-                android:parentActivityName=".MainActivity"
+                android:parentActivityName=".ui.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="hanna.matthew.advandroidfinal.MainActivity"/>
+                    android:value="hanna.matthew.advandroidfinal.ui.MainActivity"/>
         </activity>
         <activity
-                android:name=".AddNewShoe"
+                android:name=".ui.AddNewShoe"
                 android:label="@string/title_activity_add_new_shoe"
-                android:parentActivityName=".ShoeActivity"
+                android:parentActivityName=".ui.ShoeActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="hanna.matthew.advandroidfinal.ShoeActivity"/>
+                    android:value="hanna.matthew.advandroidfinal.ui.ShoeActivity"/>
         </activity>
         <activity
-                android:name=".ShoeActivity"
+                android:name=".ui.ShoeActivity"
                 android:label="@string/title_activity_shoe"
-                android:parentActivityName=".MainActivity"
+                android:parentActivityName=".ui.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="hanna.matthew.advandroidfinal.MainActivity"/>
+                    android:value="hanna.matthew.advandroidfinal.ui.MainActivity"/>
         </activity>
         <activity
-                android:name=".MainActivity"
+                android:name=".ui.MainActivity"
                 android:label="@string/app_name"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

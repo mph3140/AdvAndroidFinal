@@ -1,8 +1,7 @@
-package hanna.matthew.advandroidfinal
+package hanna.matthew.advandroidfinal.ui
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
@@ -15,24 +14,34 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import androidx.recyclerview.widget.LinearLayoutManager
-import android.view.View
+import hanna.matthew.advandroidfinal.*
+import hanna.matthew.advandroidfinal.data.Collection
+import hanna.matthew.advandroidfinal.network.GitHubService
+import hanna.matthew.advandroidfinal.network.RetrofitClientInstance
 
 
 class MainActivity : AppCompatActivity() {
 
     private var adapter: CollectionAdapter? = null
     private var recyclerView: RecyclerView? = null
+    val PREFS_NAME = "prefs"
+    val PREF_DARK_THEME = "dark_theme"
     var progressBar: ProgressBar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        val useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false)
+        if (useDarkTheme) {
+            setTheme(R.style.AppTheme_Dark_NoActionBar)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+//        fab.setOnClickListener { view ->
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
+//        }
 
         val service = RetrofitClientInstance().retrofitInstance!!.create(GitHubService::class.java!!)
         val call = service.getAllCollections()
@@ -60,6 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
+        val menuInflater = menuInflater
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
@@ -68,9 +78,20 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+
+        val id = item.itemId
+
+        if (id == R.id.action_settings) {
+            val intent = Intent(this, SettingActivity::class.java)
+            startActivity(intent)
+            return true
         }
+        return super.onOptionsItemSelected(item)
+
+    }
+    override fun onRestart() {
+        recreate()
+        super.onRestart()
+
     }
 }

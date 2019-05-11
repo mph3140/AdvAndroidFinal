@@ -4,4 +4,5 @@
     <string name="title_activity_shoe">Shoes</string>
     <string name="title_activity_add_new_shoe">Add a Shoe</string>
     <string name="title_activity_setting">SettingActivity</string>
+    <string name="theme_switch_label">Enable Dark Theme</string>
 </resources>

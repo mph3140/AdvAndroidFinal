@@ -1,27 +1,37 @@
-package hanna.matthew.advandroidfinal
+package hanna.matthew.advandroidfinal.ui
 
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 
 import kotlinx.android.synthetic.main.activity_add_new_shoe.*
 import android.content.Intent
 import android.widget.Button
-import android.R.attr.bitmap
 import android.app.Activity
+import android.net.Uri
 import android.provider.MediaStore
 import android.widget.ImageView
+import hanna.matthew.advandroidfinal.R
+import hanna.matthew.advandroidfinal.data.Shoe
 import java.io.IOException
+import java.util.*
 
 
 class AddNewShoe : AppCompatActivity() {
 
     private val pickImageRequest = 1
     private var imageView: ImageView? = null
+    val PREFS_NAME = "prefs"
+    val PREF_DARK_THEME = "dark_theme"
+    var filePath: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        val useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false)
+        if (useDarkTheme) {
+            setTheme(R.style.AppTheme_Dark_NoActionBar)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_shoe)
         setSupportActionBar(toolbar)
@@ -29,10 +39,17 @@ class AddNewShoe : AppCompatActivity() {
         fab.setOnClickListener { view ->
             var shoeName = findViewById<EditText>(R.id.shoeName)
             var shoeId = findViewById<EditText>(R.id.shoeId)
-            var showBrand = findViewById<EditText>(R.id.shoeBrand)
+            var shoeBrand = findViewById<EditText>(R.id.shoeBrand)
+            var shoeImage = findViewById<ImageView>(R.id.shoeImageView)
+
+            //Test below, realized I wouldn't be able to do this easily the I have set up so I just left it.
+            val newShoe = Shoe(10, shoeName.text.toString(), 1, filePath.toString())
             //Set values in object, send values to client
             //return result to activity
-            setResult(RESULT_OK)
+            val intent = Intent()
+            intent.putExtra("NewShoe", newShoe)
+            setResult(RESULT_OK, intent)
+            finish()
         }
         val buttonChoose = findViewById<Button>(R.id.buttonChoose)
         imageView = findViewById(R.id.shoeImageView)
@@ -60,7 +77,7 @@ class AddNewShoe : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == pickImageRequest && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
-            val filePath = data.data
+            filePath = data.data
             try {
                 val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)
                 imageView!!.setImageBitmap(bitmap)

@@ -1,4 +1,4 @@
-package hanna.matthew.advandroidfinal
+package hanna.matthew.advandroidfinal.ui
 
 import android.content.Context
 import android.content.Intent
@@ -11,6 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import hanna.matthew.advandroidfinal.data.Collection
+import hanna.matthew.advandroidfinal.R
 
 
 class CollectionAdapter(private var context: Context, private val collectionList: List<Collection>) :

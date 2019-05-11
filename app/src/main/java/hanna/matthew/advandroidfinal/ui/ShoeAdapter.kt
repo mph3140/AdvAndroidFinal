@@ -1,4 +1,4 @@
-package hanna.matthew.advandroidfinal
+package hanna.matthew.advandroidfinal.ui
 
 
 import android.content.Context
@@ -10,9 +10,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import hanna.matthew.advandroidfinal.R
+import hanna.matthew.advandroidfinal.data.Shoe
 
 
-class ShoeAdapter(private val context: Context, private val shoeList: List<Shoe>) :
+class ShoeAdapter(private val context: Context, private var shoeList: List<Shoe>) :
     RecyclerView.Adapter<ShoeAdapter.ShoeViewHolder>() {
 
     inner class ShoeViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
@@ -47,5 +49,10 @@ class ShoeAdapter(private val context: Context, private val shoeList: List<Shoe>
 
     override fun getItemCount(): Int {
         return shoeList.size
+    }
+
+    internal fun setShoes(shoes: List<Shoe>) {
+        shoeList = shoes
+        notifyDataSetChanged()
     }
 }
